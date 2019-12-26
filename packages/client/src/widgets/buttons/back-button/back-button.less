@@ -1,0 +1,15 @@
+.back-button {
+  &:hover {
+    color: lighten(@secondary-color, 30%);
+    text-decoration: underline;
+  }
+  &:active {
+    color: darken(@secondary-color, 30%);
+  }
+  &:focus {
+    color: inherit;
+  }
+}
+.inline-back-button {
+  padding: 0;
+}

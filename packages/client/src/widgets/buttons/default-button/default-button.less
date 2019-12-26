@@ -1,0 +1,17 @@
+.default-button {
+  background-color: @secondary-color;
+  border-color: @secondary-color;
+  font-size: @font-size-base;
+  &:hover {
+    background-color: lighten(@secondary-color, 30%);
+    border-color: lighten(@secondary-color, 30%);
+  }
+  &:active {
+    background-color: darken(@secondary-color, 30%);
+    border-color: darken(@secondary-color, 30%);
+  }
+  &:focus {
+    background-color: @secondary-color;
+    border-color: @secondary-color;
+  }
+}

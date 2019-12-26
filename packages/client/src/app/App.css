@@ -1,0 +1,82 @@
+html body {
+  width: 100%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: lighter;
+  src: url('../assets/fonts/open-sans/OpenSans-Light.ttf'); /* IE9 Compat Modes */
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/open-sans/OpenSans-Regular.ttf'); /* IE9 Compat Modes */
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: bold;
+  src: url('../assets/fonts/open-sans/OpenSans-Bold.ttf'); /* IE9 Compat Modes */
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/open-sans/OpenSans-SemiBold.ttf'); /* IE9 Compat Modes */
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/open-sans/OpenSans-ExtraBold.ttf'); /* IE9 Compat Modes */
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/pt-sans/PTSans-Regular.ttf'); /* IE9 Compat Modes */
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: bold;
+  src: url('../assets/fonts/pt-sans/PTSans-Bold.ttf'); /* IE9 Compat Modes */
+}

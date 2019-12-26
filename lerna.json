@@ -1,0 +1,14 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "command": {
+    "version": {
+      "message": "feat(release): release %s"
+    },
+    "publish": {
+      "conventionalCommits": true
+    }
+  },
+  "version": "0.0.1"
+}
