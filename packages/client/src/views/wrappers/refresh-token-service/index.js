@@ -15,10 +15,10 @@ const mapDispatchToProps = dispatch => bindActionCreators(
     setUserSignedIn,
     refreshToken
   },
-  dispatch,
+  dispatch
 )
 
 export default withRouter(connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(RefreshTokenService))

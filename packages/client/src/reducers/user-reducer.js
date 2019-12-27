@@ -98,25 +98,21 @@ export default function reducer(state = new ReducerRecord(), action) {
 export const stateSelector = state => state[moduleName]
 export const isSigningUp = createSelector(
   stateSelector,
-  state => state.signUp.processing,
+  state => state.signUp.processing
 )
 export const isSignedUp = createSelector(
   stateSelector,
-  state => state.signUp.signedUp,
+  state => state.signUp.signedUp
 )
 export const isSigningIn = createSelector(
   stateSelector,
-  state => state.signIn.processing,
+  state => state.signIn.processing
 )
 export const isSignedIn = createSelector(
   stateSelector,
-  state => state.signIn.signedIn,
+  state => state.signIn.signedIn
 )
 export const profile = createSelector(
   stateSelector,
-  state => state.profile.profile,
-)
-export const isFetchingProfile = createSelector(
-  stateSelector,
-  state => state.profile.processing,
+  state => state.profile.profile
 )

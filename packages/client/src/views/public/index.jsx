@@ -5,6 +5,7 @@ import SignUp from '../sign-up'
 import SignUpResult from '../sign-up-result'
 import ServerIsUnavailable from '../500'
 import Landing from '../landing'
+import Game from '../game'
 import PublicAppbar from '../appbars/public-appbar'
 
 export default () => (
@@ -12,6 +13,7 @@ export default () => (
     <PublicAppbar />
     <Switch>
       <Route path="/500" render={ServerIsUnavailable} />
+      <Route path="/play" render={Game} />
       <Route path="/sign-up" render={SignUp} />
       <Route path="/sign-in" render={SignIn} />
       <Route path="/sign-up-result" render={SignUpResult} />

@@ -38,7 +38,7 @@ export default class PublicAppbar extends Component {
               <Col xs={24} md={18}>
                 <Row gutter={40}>
                   <Col md={{ span: 3, offset: 18 }} lg={{ span: 2, offset: 20 }}>
-                    <LinkButton onClick={goTo('/')}>Play</LinkButton>
+                    <LinkButton onClick={goTo('/app/play')}>Play</LinkButton>
                   </Col>
                   <Col md={3} lg={2}>
                     <DefaultButton onClick={goTo('/app')}>Dashboard</DefaultButton>

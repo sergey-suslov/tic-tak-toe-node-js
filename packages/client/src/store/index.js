@@ -19,12 +19,12 @@ const middleware = process.env.NODE_ENV === 'development'
   : applyMiddleware(saga, routerMiddleware(history))
 
 /* eslint-disable-next-line */
-const store = process.env.NODE_ENV !== 'development' ? createStore(
+const store = process.env.NODE_ENV !== 'development' || !(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) ? createStore(
   reducer,
-  compose(middleware),
+  compose(middleware)
 ) : createStore(
   reducer,
-  compose(middleware, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
+  compose(middleware, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 )
 
 saga.run(rootSaga)

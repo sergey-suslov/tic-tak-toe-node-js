@@ -15,10 +15,10 @@ const mapDispatchToProps = dispatch => bindActionCreators(
   {
     signIn
   },
-  dispatch,
+  dispatch
 )
 
 export default withRouter(connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SignInForm))

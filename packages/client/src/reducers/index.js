@@ -6,5 +6,5 @@ import userReducer, { moduleName as user } from './user-reducer'
 export default {
   router: connectRouter(history),
   form,
-  [user]: userReducer,
+  [user]: userReducer
 }

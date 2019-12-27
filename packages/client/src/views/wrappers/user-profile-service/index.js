@@ -14,10 +14,10 @@ const mapDispatchToProps = dispatch => bindActionCreators(
   {
     getProfile
   },
-  dispatch,
+  dispatch
 )
 
 export default withRouter(connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(UserProfileService))

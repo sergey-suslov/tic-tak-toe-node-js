@@ -1,7 +1,6 @@
 import config from 'config'
 import crypto from 'crypto'
 
-
 export const generateHash = string => {
   const salt = crypto.randomBytes(config.crypto.hash.length).toString('base64')
 
