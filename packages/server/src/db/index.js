@@ -3,6 +3,7 @@ import config from 'config'
 import './models/User'
 import './models/UserRegistration'
 import './models/Session'
+import './models/Game'
 
 mongoose.connect(`mongodb://localhost:27017/${process.env.DB_NAME || config.db.name}`, {
   useNewUrlParser: true,

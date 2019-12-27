@@ -8,10 +8,11 @@ export const SIGNED_IN_WITH_ERROR = 'USER:SIGNED_IN_WITH_ERROR'
 export const SIGN_UP = 'USER:SIGN_UP'
 export const SIGNED_UP = 'USER:SIGNED_UP'
 export const SIGNED_UP_ERROR = 'USER:SIGNED_UP_ERROR'
-export const SIGN_UP_CONFIRM = 'USER:SIGN_UP_CONFIRM'
-export const SIGN_UP_CONFIRMED = 'USER:SIGN_UP_CONFIRMED'
 export const SET_USER_SIGNED_IN = 'USER:SET_USER_SIGNED_IN'
 export const REFRESH_TOKEN = 'USER:REFRESH_TOKEN'
+export const GET_HISTORY = 'USER:GET_HISTORY'
+export const CLEAR_HISTORY = 'USER:CLEAR_HISTORY'
+export const SET_HISTORY = 'USER SET_HISTORY'
 
 const actionFactory = type => payload => ({
   type,
@@ -27,7 +28,8 @@ export const signedInWithError = actionFactory(SIGNED_IN_WITH_ERROR)
 export const signUp = actionFactory(SIGN_UP)
 export const signedUp = actionFactory(SIGNED_UP)
 export const signedUpWithError = actionFactory(SIGNED_UP_ERROR)
-export const signUpConfirm = actionFactory(SIGN_UP_CONFIRM)
-export const signUpConfirmed = actionFactory(SIGN_UP_CONFIRMED)
 export const setUserSignedIn = actionFactory(SET_USER_SIGNED_IN)
 export const refreshToken = actionFactory(REFRESH_TOKEN)
+export const getHistory = actionFactory(GET_HISTORY)
+export const setHistory = actionFactory(SET_HISTORY)
+export const clearHistory = actionFactory(CLEAR_HISTORY)

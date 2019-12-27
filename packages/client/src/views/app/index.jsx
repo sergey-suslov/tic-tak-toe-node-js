@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import { DndProvider } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import Dashboard from '../dashboard'
-import Profile from '../profile'
+import Game from '../game'
 import RefreshTokenService from '../wrappers/refresh-token-service'
 import UserProfileService from '../wrappers/user-profile-service'
 import PrivateRoute from '../routing/private-route'
@@ -17,7 +17,7 @@ export default () => (
         <PrivateRoute
           component={() => (
             <Switch>
-              <Route path="/app/profile/:profileId" render={Profile} />
+              <Route path="/app/play" render={Game} />
               <Route path="/app" render={Dashboard} />
             </Switch>
           )}

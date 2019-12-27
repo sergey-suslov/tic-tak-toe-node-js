@@ -10,7 +10,7 @@ import {
   SIGNED_UP,
   SIGNED_UP_ERROR,
   SIGNED_IN_WITH_ERROR,
-  SET_USER_SIGNED_IN
+  SET_USER_SIGNED_IN, GET_HISTORY, SET_HISTORY, CLEAR_HISTORY
 } from '../actions/user-actions'
 
 export const moduleName = 'user'
@@ -28,6 +28,12 @@ export const ReducerRecord = Record({
     signedUp: false,
     message: '',
     processing: false
+  },
+  history: {
+    history: [],
+    processing: false,
+    limit: 5,
+    hasMore: true
   }
 })
 
@@ -87,6 +93,27 @@ export default function reducer(state = new ReducerRecord(), action) {
       signedUp: false,
       error: payload.error
     })
+  case GET_HISTORY:
+    return state.set('history', {
+      processing: true,
+      history: state.history.history,
+      limit: 5,
+      hasMore: true
+    })
+  case SET_HISTORY:
+    return state.set('history', {
+      processing: false,
+      limit: 5,
+      history: [...state.history.history, ...payload],
+      hasMore: payload.length === state.history.limit
+    })
+  case CLEAR_HISTORY:
+    return state.set('history', {
+      history: [],
+      processing: false,
+      limit: 5,
+      hasMore: true
+    })
   default:
     return state
   }
@@ -98,25 +125,35 @@ export default function reducer(state = new ReducerRecord(), action) {
 export const stateSelector = state => state[moduleName]
 export const isSigningUp = createSelector(
   stateSelector,
-  state => state.signUp.processing,
+  state => state.signUp.processing
 )
 export const isSignedUp = createSelector(
   stateSelector,
-  state => state.signUp.signedUp,
+  state => state.signUp.signedUp
 )
 export const isSigningIn = createSelector(
   stateSelector,
-  state => state.signIn.processing,
+  state => state.signIn.processing
 )
 export const isSignedIn = createSelector(
   stateSelector,
-  state => state.signIn.signedIn,
+  state => state.signIn.signedIn
 )
 export const profile = createSelector(
   stateSelector,
-  state => state.profile.profile,
+  state => state.profile.profile
 )
-export const isFetchingProfile = createSelector(
+
+export const history = createSelector(
   stateSelector,
-  state => state.profile.processing,
+  state => state.history.history
+)
+export const isGettingHistory = createSelector(
+  stateSelector,
+  state => state.history.processing
+)
+
+export const hasMoreHistory = createSelector(
+  stateSelector,
+  state => state.history.hasMore
 )

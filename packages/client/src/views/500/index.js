@@ -10,10 +10,10 @@ const mapStateToProps = () => ({
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
   },
-  dispatch,
+  dispatch
 )
 
 export default withRouter(connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(ServerIsUnavailable))
