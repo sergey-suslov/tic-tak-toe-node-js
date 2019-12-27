@@ -66,5 +66,9 @@ schema.methods.endGame = async function() {
   return this
 }
 
+schema.statics.findLastUsersGames = async function({ userId, limit = 15, offset = 0 }) {
+  return this.find({ userId }).sort({ date: -1 }).limit(limit).skip(offset)
+}
+
 const Game = mongoose.model('Game', schema)
 export default Game

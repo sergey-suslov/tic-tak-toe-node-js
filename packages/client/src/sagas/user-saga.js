@@ -1,6 +1,7 @@
 import { message } from 'antd'
+import queryString from 'querystring'
 import { push } from 'react-router-redux'
-import { all, takeLatest, call, put } from 'redux-saga/effects'
+import { all, takeLatest, call, put, select } from 'redux-saga/effects'
 import axios from './axios'
 import {
   SIGN_IN,
@@ -14,7 +15,7 @@ import {
   signedIn,
   setUserSignedIn,
   setProfile,
-  getProfileWithError
+  getProfileWithError, setHistory, GET_HISTORY
 } from '../actions/user-actions'
 
 function* signUp({ payload: { email, password } }) {
@@ -116,6 +117,27 @@ function* getProfile() {
   }
 }
 
+function* getHistory() {
+  try {
+    const {limit, offset} = yield select(s => ({
+      limit: s.user.history.limit,
+      offset: s.user.history.history.length
+    }))
+    const { data } = yield call(axios.get, `/api/user/history?${queryString.stringify({limit, offset})}`)
+    yield put(setHistory(data))
+  } catch (error) {
+    if (error.response) {
+      const { message } = error.response.data
+      message.error(message)
+      if (error.response.status === 401) yield put(push('/sign-in'))
+    } else if (error.request) {
+      yield put(push('/500'))
+    } else {
+      console.log('Error', error.message)
+    }
+  }
+}
+
 function* redirect() {
   yield put(push('/app'))
 }
@@ -126,6 +148,7 @@ export function* watch() {
     takeLatest(SIGNED_IN, redirect),
     takeLatest(SIGN_UP, signUp),
     takeLatest(REFRESH_TOKEN, refreshToken),
-    takeLatest(GET_PROFILE, getProfile)
+    takeLatest(GET_PROFILE, getProfile),
+    takeLatest(GET_HISTORY, getHistory)
   ])
 }

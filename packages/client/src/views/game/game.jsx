@@ -2,14 +2,15 @@ import React, {useState} from 'react'
 import {Spin, Typography} from 'antd'
 import _ from 'lodash'
 import shortid from 'shortid'
-import io from 'socket.io-client'
 import {
   useStateConnected,
   useStateGameCreated,
   useStateGameUpdated
 } from './hooks'
+import DefaultButton from '../../widgets/buttons/default-button'
 import Box from './box'
 import './game.less'
+import SocketProvider from './SocketProvider'
 
 function makeTurn(row, col, game, setGame, socket) {
   if (socket.disconnected || !game || game && game.field[row][col]) return
@@ -22,16 +23,7 @@ function makeTurn(row, col, game, setGame, socket) {
   socket.emit('make-turn', {row, col, gameId: game._id})
 }
 
-let socket
-
-export default function () {
-  if (!socket) {
-    socket = io({
-      path: '/socket.io',
-      transports: ['polling', 'websocket']
-    })
-  }
-
+function Game({socket}) {
   const connected = useStateConnected(socket)
 
   let [game, setGame] = useState({field: [[0,0,0], [0,0,0], [0,0,0]]})
@@ -59,10 +51,17 @@ export default function () {
               />
             ))}
         </div>
-        <Typography className="winner-text">
+        <Typography className="text-align-center">
           Winner: {game && game.winner ? game.winner : '...'}
         </Typography>
+        {game && game.winner ? <div className="text-align-center">
+          <DefaultButton onClick={() => setGame(
+            {field: [[0,0,0], [0,0,0], [0,0,0]]}
+          )}>Play again</DefaultButton>
+        </div> : null}
       </Spin>
     </Spin>
   )
 }
+
+export default props => <SocketProvider Component={Game} {...props} />
