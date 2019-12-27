@@ -1,6 +1,6 @@
 import http from 'http'
 import Koa from 'koa'
-import socketio from 'socket.io'
+import Socketio from 'socket.io'
 import koaBody from 'koa-body'
 import session from 'koa-session'
 import koaJWT from 'koa-jwt'
@@ -14,9 +14,11 @@ import socket from './socket'
 import routes from './routes'
 
 const app = new Koa()
-const server = http.createServer(app.callback())
 
-socket(socketio(server))
+const server = http.createServer(app.callback())
+const io = new Socketio(server, { path: '/socket.io' })
+io.set('origins', '*:*')
+socket(io)
 
 app.context.log = logger
 app.context.db = db

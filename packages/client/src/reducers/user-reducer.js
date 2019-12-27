@@ -116,7 +116,3 @@ export const profile = createSelector(
   stateSelector,
   state => state.profile.profile
 )
-export const isFetchingProfile = createSelector(
-  stateSelector,
-  state => state.profile.processing
-)

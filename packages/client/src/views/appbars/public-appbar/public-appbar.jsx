@@ -40,7 +40,7 @@ export default class PublicAppbar extends Component {
               <Col xs={24} md={20}>
                 <Row gutter={40}>
                   <Col md={{ span: 4, offset: 16 }} lg={{ span: 4, offset: 18 }}>
-                    <LinkButton onClick={goTo('/play-anonymously')}>Play anonymously</LinkButton>
+                    <LinkButton onClick={goTo('/play')}>Play anonymously</LinkButton>
                   </Col>
                   <Col md={4} lg={2}>
                     <DefaultButton onClick={goTo('/sign-in')}>Sign In</DefaultButton>
