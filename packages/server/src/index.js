@@ -17,7 +17,6 @@ const app = new Koa()
 
 const server = http.createServer(app.callback())
 const io = new Socketio(server, { path: '/socket.io' })
-io.set('origins', '*:*')
 socket(io)
 
 app.context.log = logger
