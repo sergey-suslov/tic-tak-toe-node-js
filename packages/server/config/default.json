@@ -20,9 +20,5 @@
     "name": "tictactoe",
     "userName": "tictactoe",
     "userPassword": "password"
-  },
-  "files": {
-    "maxDepth": 10,
-    "maxChildren": 50
   }
 }

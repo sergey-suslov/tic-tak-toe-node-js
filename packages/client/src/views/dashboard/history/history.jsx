@@ -16,7 +16,6 @@ export default class History extends Component{
 
   render() {
     const {history, isGettingHistory, hasMore, getHistory} = this.props
-    console.log('Hi', history)
     return (
       <Fragment>
         <Spin spinning={isGettingHistory} delay={300}>
@@ -24,9 +23,11 @@ export default class History extends Component{
             {history.map(h => <HistoryCard key={h._id} history={h} />)}
           </div>
           <br />
-          {hasMore && <DefaultButton onClick={getHistory}>
-            Load more
-          </DefaultButton>}
+          {
+            hasMore && <DefaultButton onClick={getHistory}>
+              Load more
+            </DefaultButton>
+          }
         </Spin>
       </Fragment>
     )

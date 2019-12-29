@@ -32,6 +32,11 @@ schema.methods.getCol = function(i) {
   return this.field.map(row => row[i])
 }
 
+/**
+ * Finding a winning sequence
+ * @param {Object} game Monsoose Game instance
+ * @return {Number|null} Number of the winner or null if there in no one
+ */
 const findSequence = game => {
   let winner = game.field.filter(row => row.every(b => b === 1) || row.every(b => b === 2))
   if (winner.length) return winner[0][0]
