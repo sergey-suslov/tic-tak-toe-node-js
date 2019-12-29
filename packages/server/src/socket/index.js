@@ -26,26 +26,23 @@ const endGame = async(game, socket) => {
 
 export default io => {
   io.on('connect', async socket => {
-    socket.on('init-game', async gameId => {
+    socket.on('init-game', async() => {
       const userId = await getSocketUserId(socket)
-      let game
-      if (!gameId) {
-        game = await db.model('Game').initNewGame(userId)
-      } else {
-        // TODO: find game by id
-      }
-      // socket.join(`game/${game._id}`)
-      console.log('init-game', game.toJSON())
-      socket.emit('init-game', game.toJSON())
+      const game = await db.model('Game').initNewGame(userId)
+      socket.emit('init-game', game && game.toJSON())
     })
 
     socket.on('make-turn', async({ row, col, gameId }) => {
       const game = await db.model('Game').findById(gameId)
       if (!game) return
       if (game.checkEnd()) return endGame(game, socket)
+
+      // Performing client turn
       await game.makeTurn(row, col)
       socket.emit('turn-made', game.toJSON())
       if (game.checkEnd()) return endGame(game, socket)
+
+      // Performing AI turn
       const aiTurn = calculateTurn(game.field)
       if (!aiTurn) return
       await game.makeTurn(aiTurn.row, aiTurn.col, 2)

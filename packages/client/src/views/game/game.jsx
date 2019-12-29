@@ -12,6 +12,8 @@ import Box from './box'
 import './game.less'
 import SocketProvider from './SocketProvider'
 
+const defaultField = [[0,0,0], [0,0,0], [0,0,0]]
+
 function makeTurn(row, col, game, setGame, socket) {
   if (socket.disconnected || !game || game && game.field[row][col]) return
   const updatedGame = {
@@ -26,7 +28,7 @@ function makeTurn(row, col, game, setGame, socket) {
 function Game({socket}) {
   const connected = useStateConnected(socket)
 
-  let [game, setGame] = useState({field: [[0,0,0], [0,0,0], [0,0,0]]})
+  let [game, setGame] = useState({field: defaultField})
   game = useStateGameCreated(game, setGame, socket, game._id)
 
   useStateGameUpdated(socket, setGame)
@@ -56,7 +58,7 @@ function Game({socket}) {
         </Typography>
         {game && game.winner ? <div className="text-align-center">
           <DefaultButton onClick={() => setGame(
-            {field: [[0,0,0], [0,0,0], [0,0,0]]}
+            {field: defaultField}
           )}>Play again</DefaultButton>
         </div> : null}
       </Spin>

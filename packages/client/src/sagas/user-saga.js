@@ -127,8 +127,8 @@ function* getHistory() {
     yield put(setHistory(data))
   } catch (error) {
     if (error.response) {
-      const { message } = error.response.data
-      message.error(message)
+      const { msg } = error.response.data
+      message.error(msg)
       if (error.response.status === 401) yield put(push('/sign-in'))
     } else if (error.request) {
       yield put(push('/500'))

@@ -18,7 +18,6 @@ class SocketProvider extends Component {
 
   render() {
     const {Component} = this.props
-    console.log('Render', this)
     return (
       <Component socket={this.socket} {...this.props} />
     )
