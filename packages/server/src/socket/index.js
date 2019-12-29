@@ -26,7 +26,7 @@ const endGame = async(game, socket) => {
 
 export default io => {
   io.on('connect', async socket => {
-    socket.on('init-game', async () => {
+    socket.on('init-game', async() => {
       const userId = await getSocketUserId(socket)
       const game = await db.model('Game').initNewGame(userId)
       socket.emit('init-game', game && game.toJSON())
